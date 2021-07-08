@@ -576,10 +576,33 @@ class MarkdownBuilder implements md.NodeVisitor {
   void _addBlockChild(Widget child) {
     final _BlockElement parent = _blocks.last;
     if (parent.children.isNotEmpty) {
-      parent.children.add(SizedBox(height: styleSheet.blockSpacing));
+      double? height = styleSheet.blockSpacing;
+      if (_blockTagIsHeader(_currentBlockTag)) {
+        height = styleSheet.headersBlockSpacing;
+      } else if (_currentBlockIsList()) {
+        height = styleSheet.listItemsBlockSpacing;
+      }
+      if (_blockTagIsHeader(_lastTag)) {
+        height =
+            (height ?? 0) + (styleSheet.headersBottomAdditionalSpacing ?? 0);
+      }
+      parent.children.add(SizedBox(height: height));
     }
     parent.children.add(child);
     parent.nextListIndex += 1;
+  }
+
+  bool _blockTagIsHeader(String? tag) {
+    return tag == 'h1' ||
+        tag == 'h2' ||
+        tag == 'h3' ||
+        tag == 'h4' ||
+        tag == 'h5' ||
+        tag == 'h6';
+  }
+
+  bool _currentBlockIsList() {
+    return _currentBlockTag == 'ul' || _currentBlockTag == 'ol';
   }
 
   void _addAnonymousBlockIfNeeded() {

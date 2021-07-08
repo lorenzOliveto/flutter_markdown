@@ -25,6 +25,9 @@ class MarkdownStyleSheet {
     this.img,
     this.checkbox,
     this.blockSpacing,
+    this.headersBlockSpacing,
+    this.headersBottomAdditionalSpacing,
+    this.listItemsBlockSpacing,
     this.listIndent,
     this.listBullet,
     this.listBulletPadding,
@@ -101,6 +104,9 @@ class MarkdownStyleSheet {
         color: theme.primaryColor,
       ),
       blockSpacing: 8.0,
+      headersBlockSpacing: 8.0,
+      headersBottomAdditionalSpacing: 0.0,
+      listItemsBlockSpacing: 8.0,
       listIndent: 24.0,
       listBullet: theme.textTheme.bodyText2,
       listBulletPadding: const EdgeInsets.only(right: 4),
@@ -190,6 +196,9 @@ class MarkdownStyleSheet {
         color: theme.primaryColor,
       ),
       blockSpacing: 8,
+      headersBlockSpacing: 8,
+      headersBottomAdditionalSpacing: 0,
+      listItemsBlockSpacing: 8,
       listIndent: 24,
       listBullet: theme.textTheme.textStyle,
       listBulletPadding: const EdgeInsets.only(right: 4),
@@ -267,6 +276,9 @@ class MarkdownStyleSheet {
         color: theme.primaryColor,
       ),
       blockSpacing: 8.0,
+      headersBlockSpacing: 8.0,
+      headersBottomAdditionalSpacing: 0.0,
+      listItemsBlockSpacing: 8.0,
       listIndent: 24.0,
       listBullet: theme.textTheme.bodyText2,
       listBulletPadding: const EdgeInsets.only(right: 4),
@@ -319,6 +331,9 @@ class MarkdownStyleSheet {
     TextStyle? img,
     TextStyle? checkbox,
     double? blockSpacing,
+    double? headersBlockSpacing,
+    double? headersBottomAdditionalSpacing,
+    double? listItemsBlockSpacing,
     double? listIndent,
     TextStyle? listBullet,
     EdgeInsets? listBulletPadding,
@@ -364,6 +379,11 @@ class MarkdownStyleSheet {
       img: img ?? this.img,
       checkbox: checkbox ?? this.checkbox,
       blockSpacing: blockSpacing ?? this.blockSpacing,
+      headersBlockSpacing: headersBlockSpacing ?? this.headersBlockSpacing,
+      headersBottomAdditionalSpacing:
+          headersBottomAdditionalSpacing ?? this.headersBottomAdditionalSpacing,
+      listItemsBlockSpacing:
+          listItemsBlockSpacing ?? this.listItemsBlockSpacing,
       listIndent: listIndent ?? this.listIndent,
       listBullet: listBullet ?? this.listBullet,
       listBulletPadding: listBulletPadding ?? this.listBulletPadding,
@@ -418,6 +438,9 @@ class MarkdownStyleSheet {
       img: img!.merge(other.img),
       checkbox: checkbox!.merge(other.checkbox),
       blockSpacing: other.blockSpacing,
+      headersBlockSpacing: other.headersBlockSpacing,
+      headersBottomAdditionalSpacing: other.headersBottomAdditionalSpacing,
+      listItemsBlockSpacing: other.listItemsBlockSpacing,
       listIndent: other.listIndent,
       listBullet: listBullet!.merge(other.listBullet),
       listBulletPadding: other.listBulletPadding,
@@ -495,6 +518,15 @@ class MarkdownStyleSheet {
 
   /// The amount of vertical space to use between block-level elements.
   final double? blockSpacing;
+
+  /// The amount of vertical space to use between header elements.
+  final double? headersBlockSpacing;
+
+  /// The amount of vertical space to use after an heading.
+  final double? headersBottomAdditionalSpacing;
+
+  /// The amount of vertical space to use between list item elements.
+  final double? listItemsBlockSpacing;
 
   /// The amount of horizontal space to indent list items.
   final double? listIndent;
@@ -607,6 +639,10 @@ class MarkdownStyleSheet {
         typedOther.img == img &&
         typedOther.checkbox == checkbox &&
         typedOther.blockSpacing == blockSpacing &&
+        typedOther.headersBlockSpacing == headersBlockSpacing &&
+        typedOther.headersBottomAdditionalSpacing ==
+            headersBottomAdditionalSpacing &&
+        typedOther.listItemsBlockSpacing == listItemsBlockSpacing &&
         typedOther.listIndent == listIndent &&
         typedOther.listBullet == listBullet &&
         typedOther.listBulletPadding == listBulletPadding &&
@@ -656,6 +692,9 @@ class MarkdownStyleSheet {
       img,
       checkbox,
       blockSpacing,
+      headersBlockSpacing,
+      headersBottomAdditionalSpacing,
+      listItemsBlockSpacing,
       listIndent,
       listBullet,
       listBulletPadding,
